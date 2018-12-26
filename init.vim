@@ -1,6 +1,12 @@
 set nocompatible              " Remove Vi compatibility
 
 call plug#begin('~/.config/nvim/autoload')
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+
 " Make sure that we get the corrent indentation with indentpython plugin
 Plug 'vim-scripts/indentpython.vim'
 
@@ -18,7 +24,17 @@ Plug 'nvie/vim-flake8'
 " Jedi-vim
 Plug 'davidhalter/jedi-vim'
 
+" Zenburn colour scheme
+Plug 'jnurmine/Zenburn'
+
 call plug#end()
+
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=menuone,noselect,noinsert
+set shortmess+=c
+let ncm2#popup_delay = 5
+let ncm2#complete_length = [[1, 1]]
+let g:ncm2#matcher = 'substrfuzzy'
 
 " Set encoding to UTF-8
 set encoding=utf-8
@@ -40,3 +56,25 @@ au BufNewFile,BufRead *.py
     \ autoindent
     \ fileformat=unix
 
+" Investigate what this does!
+let python_highlight_all = 1
+syntax on
+
+" Do not show docstring popup until called for
+autocmd FileType python setlocal completeopt-=preview
+" Do not start autocompletion on . - Requires that it is called
+let g:jedi#popup_on_dot = 0
+
+" Set colour scheme
+colorscheme zenburn
+
+
+let g:jedi#auto_initialization = 1
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#completions_command = ""
+let g:jedi#show_call_signatures = 1
+
+set ignorecase
+set smartcase
