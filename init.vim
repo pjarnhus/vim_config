@@ -27,6 +27,12 @@ Plug 'davidhalter/jedi-vim'
 " Zenburn colour scheme
 Plug 'jnurmine/Zenburn'
 
+" Fugitive - Git support
+Plug 'tpope/vim-fugitive'
+
+" Unimpaired
+Plug 'tpope/vim-unimpaired'
+
 call plug#end()
 
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -76,5 +82,21 @@ let g:jedi#smart_auto_mappings = 0
 let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = 1
 
+" Ignore case in searches, except when upper case letters are provided
 set ignorecase
 set smartcase
+
+" Save when switching to another window
+au FocusLost * :wa
+
+" Remap movement between splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
+
+" Set up leader key maps
+let mapleader="æ"
+
+" Break line while remaining in normal mode
+nnoremap <leader>j i<CR><ESC>
