@@ -100,3 +100,6 @@ let mapleader="æ"
 
 " Break line while remaining in normal mode
 nnoremap <leader>j i<CR><ESC>
+
+" Run Flake8 when saving
+autocmd BufWritePost *.py call Flake8()
