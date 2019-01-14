@@ -1,1 +1,6 @@
 autoload/
+.netrwhist
+bin
+bundle
+share
+
