@@ -1,6 +1,12 @@
 set nocompatible              " Remove Vi compatibility
 
-call plug#begin('~/.config/nvim/autoload')
+if has('unix')
+	call plug#begin('~/.config/nvim/autoload')
+endif
+if has('win32')
+	call plug#begin(expand("%LOCALAPPDATA%/nvim/autoload"))
+	let g:python3_host_prog = '%LOCALAPPDATA%\Continuum\anaconda3\python.exe'
+end
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-jedi'
