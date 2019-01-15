@@ -30,8 +30,10 @@ Plug 'nvie/vim-flake8'
 " Jedi-vim
 Plug 'davidhalter/jedi-vim'
 
-" Zenburn colour scheme
-Plug 'jnurmine/Zenburn'
+" Zenburn colour scheme only works on Linux
+if has('unix')
+	Plug 'jnurmine/Zenburn'
+endif
 
 " Fugitive - Git support
 Plug 'tpope/vim-fugitive'
@@ -77,8 +79,10 @@ autocmd FileType python setlocal completeopt-=preview
 " Do not start autocompletion on . - Requires that it is called
 let g:jedi#popup_on_dot = 0
 
-" Set colour scheme
-colorscheme zenburn
+" Set colour scheme on exists on Linux
+if has('unix')
+	colorscheme zenburn
+endif
 
 
 let g:jedi#auto_initialization = 1
