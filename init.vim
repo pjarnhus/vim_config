@@ -5,7 +5,11 @@ if has('unix')
 endif
 if has('win32')
 	call plug#begin(expand("%LOCALAPPDATA%/nvim/autoload"))
+<<<<<<< HEAD
 	let g:python3_host_prog = 'C:\Users\bb9946\AppData\Local\Continuum\anaconda3\python.exe'
+=======
+	let g:python3_host_prog = '%LOCALAPPDATA%\Continuum\anaconda3\python.exe'
+>>>>>>> 19a07277da08f3560ffbc01a3f9edf6d0d379b83
 end
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
