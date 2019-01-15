@@ -3,5 +3,5 @@
 2. Run `conda install -c conda-forge neovim`
 3. Create %LOCALAPPDATA%\nvim\init.vim and insert
 ```vim
-let g:python3_host_prog = 'C:\Users\bb9946\AppData\Local\Continuum\anaconda3\python.exe'
+let g:python3_host_prog = <path to python>
 ```
