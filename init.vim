@@ -4,7 +4,7 @@ if has('unix')
 	call plug#begin('~/.config/nvim/autoload')
 endif
 if has('win32')
-	call plug#begin(expand("%LOCALAPPDATA%/nvim/autoload"))
+	call plug#begin('C:\Users\bb9946\AppData\Local\nvim\autoload')
 	let g:python3_host_prog = 'C:\Users\bb9946\AppData\Local\Continuum\anaconda3\python.exe'
 end
 Plug 'roxma/nvim-yarp'
@@ -31,9 +31,7 @@ Plug 'nvie/vim-flake8'
 Plug 'davidhalter/jedi-vim'
 
 " Zenburn colour scheme only works on Linux
-if has('unix')
-	Plug 'jnurmine/Zenburn'
-endif
+Plug 'jnurmine/Zenburn'
 
 " Fugitive - Git support
 Plug 'tpope/vim-fugitive'
@@ -80,9 +78,7 @@ autocmd FileType python setlocal completeopt-=preview
 let g:jedi#popup_on_dot = 0
 
 " Set colour scheme on exists on Linux
-if has('unix')
-	colorscheme zenburn
-endif
+colorscheme zenburn
 
 
 let g:jedi#auto_initialization = 1
@@ -111,3 +107,6 @@ let mapleader="æ"
 " Break line while remaining in normal mode
 nnoremap <leader>j i<CR><ESC>
 
+" Create easy switching between buffers
+nnoremap <leader>l :bnext<CR>
+nnoremap <leader>h :bprevious<CR>
