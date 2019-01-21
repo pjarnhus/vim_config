@@ -107,3 +107,6 @@ let mapleader="æ"
 " Break line while remaining in normal mode
 nnoremap <leader>j i<CR><ESC>
 
+" Create easy switching between buffers
+nnoremap <leader>l :bnext<CR>
+nnoremap <leader>h :bprevious<CR>
