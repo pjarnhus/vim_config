@@ -110,3 +110,44 @@ nnoremap <leader>j i<CR><ESC>
 " Create easy switching between buffers
 nnoremap <leader>l :bnext<CR>
 nnoremap <leader>h :bprevious<CR>
+
+" Create custom statusline
+" Generic function for the statusline
+function! StatusLine(state)
+    let statusline=""
+ 
+    " Add buffer number
+    let statusline.="%(%{&buflisted?bufnr('%'):''}"
+
+    " Add a >> for the active buffer statusline
+    if a:state == "Active"
+        let statusline.="\ >>\ "
+    else
+        let statusline.="\ \ \ \ "
+    endif
+    let statusline.="%)"
+    let statusline.="%<"
+
+    " Add square brackets around readonly files
+    let statusline.="%{&readonly?'[':''}"
+    let statusline.="%t"
+    let statusline.="%{&readonly?']':''}"
+
+    " Add an asterix after the filename for changed files
+    let statusline.="%{&modified?'*':''}"
+    let statusline.="\ "
+
+    " Show Git branch names on the right
+    let statusline.="%=\ %{fugitive#head()!=''?'('.fugitive#head().')':''}"
+    return statusline
+endfunction
+
+" Initialise the statusline
+set statusline=%!StatusLine('Active')
+
+" Change the statusline between active and inactive
+augroup status
+    autocmd!
+    autocmd WinEnter * setlocal statusline=%!StatusLine('Active')
+    autocmd WinLeave * setlocal statusline=%!StatusLine('Inactive')
+augroup END
