@@ -1,5 +1,8 @@
 set nocompatible              " Remove Vi compatibility
 
+" Disable modelines for security reason
+set nomodeline
+
 if has('unix')
 	call plug#begin('~/.config/nvim/autoload')
 endif
@@ -111,6 +114,9 @@ nnoremap <leader>j i<CR><ESC>
 nnoremap <leader>l :bnext<CR>
 nnoremap <leader>h :bprevious<CR>
 
+" Create dash line below current line
+nnoremap <leader>- Yp<C-V>$r-
+
 " Create custom statusline
 " Generic function for the statusline
 function! StatusLine(state)
@@ -151,3 +157,6 @@ augroup status
     autocmd WinEnter * setlocal statusline=%!StatusLine('Active')
     autocmd WinLeave * setlocal statusline=%!StatusLine('Inactive')
 augroup END
+
+" Set British spell checker
+set spell spelllang=en_gb
